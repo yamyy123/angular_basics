@@ -1,0 +1,165 @@
+
+<h1 [innerText]="title"> </h1>   <!--property binding-->
+<!--upside we have given the title using one way binding in which the data cannot be changed-->
+<!--down we have given using angular method to use it via class in angular , these both are one way binding-->
+<h1>{{firstname}}  {{lastname}}</h1>  <!--string interpolation-->
+<!--these two methods are used to send  the data to the component to view(html page)-->
+
+<!--there is another method to send the data from the view to component it is known as event binding-->
+
+<!--two way binding is there here we are using ngmodel which is the angular speciality and for that we need to have formsmodule in app.module.ts-->
+
+ <!--<h1>{{name}}</h1>
+<br>
+<input type="text" [(ngModel)]="name"> -->
+
+<!--this is equal to the directly we are changing the name in both-->
+
+<!--using the string interpolation we can also use the typescript function to give output-->
+
+<p>{{getMax(100,200)}}</p>
+
+<!--like this also we can able to make the typescript calculations inside it-->
+
+<p>100 x 20 = {{100*20}}</p>
+
+<!--we can also use the string interpolation in the changing the property also like colours-->
+<p style.color="{{colour}}">vanakam</p>
+
+<!--disabled is a attribute which will help in disabiling the submit button-->
+<button type="button" [disabled]="isdisabled">click me!</button>
+
+<!--<button type="button" [attr.disabled]="isdisabled">click me!</button>   we can also give like this-->
+
+<p [innerText]="'welcome to'+' angular'"></p>
+
+<p>you have clicked {{clickcount}} times</p>
+<!--in angular we will use () to listen to events and we can also use on-click ,on keydown attributes instead of it-->
+<button type="button" (click)="increasecount();clickcount1=clickcount">click me!</button>
+<!--after that we can also able to send the values also-->
+<p>you have clicked {{clickcount1}} times</p>
+
+<!--for this we are using  $event this is a special case as one want to get input when it occurs we can receive it as event:any in typescript-->
+Typesomething : <input type="text" (input)="handleinput($event)">
+<h1>{{value}}</h1>
+<!--instead of sending it via function we can able to directly use it like below-->
+Typesomething : <input type="text" (input)=" value1=$any($event.target).value">
+<h1>{{value1}}</h1>
+
+<!--structural directive-->
+<!--the * need to be there in the ngFor before it is used to get the array values or array of objects into list values or table -->
+<ul>
+<li *ngFor="let movie of movies">
+    {{movie}}
+</li>
+</ul>
+
+<div class="panel panel-primary">
+    <div class = "panel-heading">{{'welcome'}}</div>
+    <div class="panel-body">
+        <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>
+                SI.NO
+            </th>
+        <th>
+            director
+        </th>
+        <th>
+            hero
+        </th>
+        <th>
+            comedian
+        </th>
+    </tr>
+</thead>
+<tbody>
+    <!--ngClass is also another property for using css classes in angular from *ngFor we can also get the first last even odd properties-->
+    <tr  *ngFor="let direction of directions;let i=index,let o=odd,let e=even;let f=first,let l=last;" [ngClass]='{"bg-success": e,"bg-failure": o}'
+    >
+        <td>{{i+1}}</td>
+<td> {{direction.director}}</td> 
+<td>{{direction.hero}}</td> 
+<td>{{direction.comedian}}</td> 
+    </tr>
+</tbody>
+    </table>
+</div>
+</div>
+</div>
+
+<br>
+<label for="num">Type num:</label>
+<input type ="text" [(ngModel)]="num">
+<!--like this we can able to bring based on the input we can take and come-->
+<div [ngSwitch] = "num">
+    <div *ngSwitchCase="1">one</div>
+    <div *ngSwitchCase="2">two</div>
+    <div *ngSwitchCase="3">three</div>
+    <div *ngSwitchCase="4">four</div>
+</div>
+
+
+<h1> ngIF Example</h1>
+<h1><label for="">check:<input type="checkbox" [(ngModel)]="showMe"></label></h1>
+<!--<p *ngIf="showMe;else elseBlock">welcome</p>
+<p *ngIf="!showMe">bye</p> this will come into action when it is false
+<ng-template #elseBlock>
+    <p>i'm died</p>
+</ng-template> -->  
+<!--like this also we can able to do but theres also then which the true part will come there-->
+
+<div *ngIf="showMe; then thenblock else elseblock"></div>
+
+<ng-template #thenblock>
+  <p>welcome</p>
+</ng-template>
+<ng-template #elseblock>
+  <p>bye</p>
+</ng-template>
+
+<!--then will come into action when the showme is true and else will come when it is false -->
+
+<!-- <h1 [ngClass]="['primary','big']">good morning everyone</h1> -->
+primary :<input type="checkbox" [(ngModel)]="enableprimary">
+big: <input type="checkbox" [(ngModel)]="enablebig">
+<p [ngClass]="{'primary':enableprimary,'big':enablebig}"> good morning </p>
+<!-- like this we can also able to give the properties in array also and also in objects also-->
+
+<h2 [ngStyle]="{'color':color=='error'?'red':'blue'}">vasrrrrrrr</h2>
+<!--like this also we can able to use ternary operator in angular-->
+
+<!--like this we can also use many properties-->
+
+<h2 [ngStyle]="{'backgroundColor':colours,
+'font-style':'italic'}"(mouseenter)="onmouseenter()" (mouseleave)="onmouseleave()">vasrrrrrrr</h2>
+
+
+
+<button type="button" (click)="changecolour()">Click me!</button>
+<h1>un formatted date:{{todate}}</h1>
+<!-- this is known as date pipe the angular had predefined this-->
+<h1>formatted date:{{todate|date}}</h1>
+<!--we can also able to add arguments to the pipe -->
+
+<h1>medium date:{{todate|date:'medium'}}</h1>
+<h1>short date:{{todate|date:'short'}}</h1>
+<h1>fullDate date:{{todate|date:'fullDate'}}</h1>
+<h1>longDate date:{{todate|date:'longDate'}}</h1>
+
+<h2>uppercase: {{message|uppercase}}</h2>
+<h2>uppercase: {{message|lowercase}}</h2>
+
+<h2>price: {{price|currency}}</h2>
+
+<h2>price: {{price|currency:'INR'}}</h2>
+
+<h2>price: {{price|currency:'INR ':false}}</h2>
+
+<h2>slice :{{messages|slice:11:20}}</h2>
+
+<h2>slice :{{messages|slice:-7}}</h2> <!--if you -7 means the last index it will think as 0 and it will give upto -7-->
+
+<h2>slice :{{messages|slice:0:7}}</h2> <!--the last numbers which we are giving is not taken into account it will give upto that only -->
