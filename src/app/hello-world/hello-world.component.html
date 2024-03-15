@@ -35,7 +35,7 @@
 
 <p>you have clicked {{clickcount}} times</p>
 <!--in angular we will use () to listen to events and we can also use on-click ,on keydown attributes instead of it-->
-<button type="button" (click)="increasecount();clickcount1=clickcount">click me!</button>
+<button type ="button" (click)="increasecount();clickcount1=clickcount">click me!</button>
 <!--after that we can also able to send the values also-->
 <p>you have clicked {{clickcount1}} times</p>
 
@@ -120,7 +120,6 @@ Typesomething : <input type="text" (input)=" value1=$any($event.target).value">
   <p>bye</p>
 </ng-template>
 
-<!--then will come into action when the showme is true and else will come when it is false -->
 
 <!-- <h1 [ngClass]="['primary','big']">good morning everyone</h1> -->
 primary :<input type="checkbox" [(ngModel)]="enableprimary">

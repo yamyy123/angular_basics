@@ -1,0 +1,25 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #8e44ad;
+    padding-bottom: 40px;
+  }
+  
+  .navbar-brand,
+  .navbar-nav a {
+    color: #ffffff; 
+    font-weight: bold;
+    font-size: 30px;
+    font-style: normal;
+  }
+  
+  .navbar-nav a:hover {
+    color: #000000;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff; 
+  }
+  
+
+  
+  
